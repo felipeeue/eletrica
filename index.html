@@ -1,701 +1,541 @@
+  <html>
+<head>
+    <title>Curso Técnico em Eletrotécnica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
 
-    <html>
-    <head>
-        <title>Curso Técnico em Eletrotécnica</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f4f4f9;
-                color: #333;
-                margin: 0;
-                padding: 0;
-                line-height: 1.6;
+        h1, h2 {
+            color: #4CAF50;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: none; /* Esconder conteúdo por padrão */
+            transition: all 0.3s ease;
+        }
+
+        .active {
+            display: block; /* Mostrar quando ativado */
+        }
+
+        .atividade {
+            margin-top: 20px;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .atividade:hover {
+            background-color: #e0e0e0;
+        }
+
+        .atividade-correta {
+            background-color: #d4edda; /* Verde */
+            color: #155724;
+        }
+
+        .atividade-errada {
+            background-color: #f8d7da; /* Vermelho */
+            color: #721c24;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            content.classList.toggle("active");
+        }
+
+        function verificarAtividade(element, correta) {
+            if (correta) {
+                element.classList.add("atividade-correta");
+                element.classList.remove("atividade-errada");
+            } else {
+                element.classList.add("atividade-errada");
+                element.classList.remove("atividade-correta");
             }
+        }
+    </script>
+</head>
+<body>
+   <h1>Curso Técnico em Eletrotécnica</h1>
 
-            h1, h2 {
-                color: #4CAF50;
-                text-align: center;
-                cursor: pointer;
-            }
+<h2 onclick="toggleContent('conteudos')">CONTEÚDOS</h2>
+<div id="conteudos" class="content">
+    <h2 onclick="toggleContent('transformacao-ydelta')">Transformação Y-Delta e Delta-Y</h2>
+    <div id="transformacao-ydelta" class="content">
+        <p>A transformação Y-Delta e Delta-Y são utilizadas para simplificar circuitos com resistores dispostos em estrela (Y) ou triângulo (Delta). Essas transformações são essenciais para facilitar cálculos de resistências equivalentes em circuitos mais complexos.</p>
+        <p><strong>Transformação Y para Delta:</strong> A transformação de resistores de uma configuração estrela (Y) para uma configuração triângulo (Delta) pode ser feita utilizando as fórmulas abaixo. Essa transformação é útil quando você precisa encontrar as resistências equivalentes para análise do circuito.</p>
+        <pre>Ra = (R1 * R2) / (R1 + R2 + R3)</pre>
+        <pre>Rb = (R2 * R3) / (R1 + R2 + R3)</pre>
+        <pre>Rc = (R1 * R3) / (R1 + R2 + R3)</pre>
+        <p><strong>Transformação Delta para Y:</strong> Para transformar um circuito Delta (triângulo) em Y (estrela), usamos as seguintes fórmulas:</p>
+        <pre>R1 = (Ra * Rb) / (Ra + Rb + Rc)</pre>
+        <pre>R2 = (Rb * Rc) / (Ra + Rb + Rc)</pre>
+        <pre>R3 = (Rc * Ra) / (Ra + Rb + Rc)</pre>
+        
+        <h3>Exemplos:</h3>
+        <p><strong>Exemplo 1:</strong> Se R1 = 10Ω, R2 = 20Ω e R3 = 30Ω, calcule as resistências correspondentes na configuração Delta utilizando as fórmulas mencionadas.</p>
+        <ul>
+            <li><strong>Ra =</strong> (10 * 20) / (10 + 20 + 30) = 200 / 60 = 3.33Ω</li>
+            <li><strong>Rb =</strong> (20 * 30) / (10 + 20 + 30) = 600 / 60 = 10Ω</li>
+            <li><strong>Rc =</strong> (10 * 30) / (10 + 20 + 30) = 300 / 60 = 5Ω</li>
+        </ul>
 
-            .content {
-                max-width: 900px;
-                margin: 0 auto;
-                padding: 20px;
-                background-color: #fff;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                margin-bottom: 20px;
-                display: none; /* Esconder conteúdo por padrão */
-                transition: all 0.3s ease;
-            }
+        <p><strong>Exemplo 2:</strong> Se R1 = 15Ω, R2 = 25Ω e R3 = 35Ω, calcule as resistências na configuração Delta.</p>
+        <ul>
+            <li><strong>Ra =</strong> (15 * 25) / (15 + 25 + 35) = 375 / 75 = 5Ω</li>
+            <li><strong>Rb =</strong> (25 * 35) / (15 + 25 + 35) = 875 / 75 = 11.67Ω</li>
+            <li><strong>Rc =</strong> (15 * 35) / (15 + 25 + 35) = 525 / 75 = 7Ω</li>
+        </ul>
 
-            .active {
-                display: block; /* Mostrar quando ativado */
-            }
+        <p><strong>Exemplo 3:</strong> Se R1 = 5Ω, R2 = 10Ω e R3 = 15Ω, calcule as resistências na configuração Delta.</p>
+        <ul>
+            <li><strong>Ra =</strong> (5 * 10) / (5 + 10 + 15) = 50 / 30 = 1.67Ω</li>
+            <li><strong>Rb =</strong> (10 * 15) / (5 + 10 + 15) = 150 / 30 = 5Ω</li>
+            <li><strong>Rc =</strong> (5 * 15) / (5 + 10 + 15) = 75 / 30 = 2.5Ω</li>
+        </ul>
 
-            .footer {
-                text-align: center;
-                font-size: 14px;
-                color: #777;
-                margin-top: 50px;
-            }
+        <p><strong>Exemplo 4:</strong> Se R1 = 8Ω, R2 = 12Ω e R3 = 18Ω, calcule as resistências na configuração Delta.</p>
+        <ul>
+            <li><strong>Ra =</strong> (8 * 12) / (8 + 12 + 18) = 96 / 38 = 2.53Ω</li>
+            <li><strong>Rb =</strong> (12 * 18) / (8 + 12 + 18) = 216 / 38 = 5.68Ω</li>
+            <li><strong>Rc =</strong> (8 * 18) / (8 + 12 + 18) = 144 / 38 = 3.79Ω</li>
+        </ul>
 
-            .atividade {
-                margin-top: 20px;
-                background-color: #f0f0f0;
-                padding: 10px;
-                border-radius: 5px;
-                cursor: pointer;
-                margin-bottom: 10px;
-            }
-
-            .atividade:hover {
-                background-color: #e0e0e0;
-            }
-
-            .atividade-correta {
-                background-color: #d4edda; /* Verde */
-                color: #155724;
-            }
-
-            .atividade-errada {
-                background-color: #f8d7da; /* Vermelho */
-                color: #721c24;
-            }
-
-        </style>
-        <script>
-            // Função para alternar a visibilidade do conteúdo
-            function toggleContent(id) {
-                var content = document.getElementById(id);
-                content.classList.toggle("active");
-            }
-
-            // Função para verificar a resposta da atividade
-            function verificarAtividade(element, correta) {
-                if (correta) {
-                    element.classList.add("atividade-correta");
-                    element.classList.remove("atividade-errada");
-                } else {
-                    element.classList.add("atividade-errada");
-                    element.classList.remove("atividade-correta");
-                }
-            }
-        </script>
-    </head>
-    <body>
-        <h1>Curso Técnico em Eletrotécnica</h1>
-
-        <!-- Títulos dos temas -->
-        <h2 onclick="toggleContent('transformacao-ydelta')">Transformação Y-Delta e Delta-Y</h2>
-<div id="transformacao-ydelta" class="content">
-    <p>A transformação Y-Delta e Delta-Y são utilizadas para simplificar circuitos com resistores dispostos em estrela (Y) ou triângulo (Delta). Essas transformações são essenciais para facilitar cálculos de resistências equivalentes em circuitos mais complexos.</p>
-    <h3>Métodos de Resolução:</h3>
-    <p>Use as fórmulas para realizar as transformações entre as configurações Y e Delta:</p>
-    <pre>Ra = (R1 * R2) / (R1 + R2 + R3)</pre>
-    <p>Para a transformação de Delta para Y:</p>
-    <pre>R1 = (Ra * Rb) / (Ra + Rb + Rc)</pre>
-    <h3>Exemplo:</h3>
-    <p>Se você tiver um circuito em configuração Y com resistores R1, R2 e R3, pode calcular a resistência equivalente Ra, Rb, e Rc aplicando as fórmulas acima para a configuração Delta.</p>
-    <p><strong>Exemplo prático:</strong> Se R1 = 10Ω, R2 = 20Ω e R3 = 30Ω, calcule as resistências correspondentes na configuração Delta utilizando a fórmula mencionada.</p>
-    <h3>Imagem Ilustrativa:</h3>
-    <img src="https://lh4.googleusercontent.com/proxy/6kitbFzShzDV2MuYTKHuREIMWaPHr4sHHLk6F6v36t2KlEj8k4lmkMGacI2rluUpBSqike2RSJCJjrFfFwAcKKVFURr11kmi0QtPBZ0aUSTxuN8w-_Gp" alt="Transformação Y-Delta" style="max-width: 100%; height: auto;">
-    <h3>Atividades:</h3>
-    <div class="atividade" onclick="verificarAtividade(this, true)">1. Calcule a resistência equivalente de um circuito Delta-Y.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">2. Identifique a configuração Y-Delta e aplique incorretamente a fórmula.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">3. Determine a resistência equivalente de um circuito Y com os valores R1 = 15Ω, R2 = 25Ω e R3 = 35Ω.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">4. Transforme uma configuração Y para Delta utilizando a fórmula incorreta.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">5. Resolva a equação para um circuito Delta com resistores Ra = 10Ω, Rb = 15Ω, e Rc = 20Ω.</div>
-</div>
+        <p><strong>Exemplo 5:</strong> Se R1 = 9Ω, R2 = 16Ω e R3 = 24Ω, calcule as resistências na configuração Delta.</p>
+        <ul>
+            <li><strong>Ra =</strong> (9 * 16) / (9 + 16 + 24) = 144 / 49 = 2.94Ω</li>
+            <li><strong>Rb =</strong> (16 * 24) / (9 + 16 + 24) = 384 / 49 = 7.84Ω</li>
+            <li><strong>Rc =</strong> (9 * 24) / (9 + 16 + 24) = 216 / 49 = 4.41Ω</li>
+        </ul>
+    </div>
 
     <h2 onclick="toggleContent('ponte-de-wheatstone')">Ponte de Wheatstone</h2>
-<div id="ponte-de-wheatstone" class="content">
-    <p>A Ponte de Wheatstone é um dispositivo utilizado para medir resistências desconhecidas. Ela é composta por quatro resistores dispostos em um arranjo específico, com uma fonte de tensão e um galvanômetro (instrumento de medição de corrente). Seu funcionamento é baseado no equilíbrio de correntes entre os resistores.</p>
-    <p>Quando a ponte está em equilíbrio, a razão entre os resistores conhecidos é igual à razão entre o resistor desconhecido e o resistor de referência. A equação para calcular a resistência desconhecida é:</p>
-    <h3>Métodos de Resolução:</h3>
-    <pre>Rx = (R2 * R3) / R1</pre>
-    <p>Onde:</p>
-    <ul>
-        <li><strong>R1, R2, R3</strong> são resistores conhecidos</li>
-        <li><strong>Rx</strong> é o resistor desconhecido (que queremos determinar)</li>
-    </ul>
-    <p>Para usar a ponte de Wheatstone, basta ajustar a resistência do resistor de referência até que a corrente no galvanômetro seja zero, o que indica que a ponte está em equilíbrio.</p>
-    <h3>Exemplo:</h3>
-    <p>Suponha que os resistores conhecidos sejam:</p>
-    <ul>
-        <li><strong>R1 = 10 Ω</strong></li>
-        <li><strong>R2 = 20 Ω</strong></li>
-        <li><strong>R3 = 30 Ω</strong></li>
-    </ul>
-    <p>A resistência desconhecida <strong>Rx</strong> pode ser calculada como:</p>
-    <pre>Rx = (20 * 30) / 10 = 60 Ω</pre>
-    <h3>Imagem do Circuito:</h3>
-    <img src="https://static.mundoeducacao.uol.com.br/mundoeducacao/conteudo/circuito-da-ponte-de-wheatstone.jpg" alt="Circuito da Ponte de Wheatstone" width="500">
-    <h3>Atividades:</h3>
-    <div class="atividade" onclick="verificarAtividade(this, true)">1. Calcule a resistência desconhecida Rx com os seguintes valores: R1 = 50 Ω, R2 = 100 Ω, R3 = 150 Ω.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">2. Resolva a equação para Rx de forma incorreta, utilizando um valor errado para um dos resistores.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">3. Dado o valor de Rx = 75 Ω, calcule o valor de R3 usando R1 = 25 Ω e R2 = 50 Ω.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">4. Resolva a equação de maneira incorreta, considerando R2 como desconhecido e substituindo-o por um valor aleatório.</div>
-</div>
-
-        <h2 onclick="toggleContent('teorema-superposicao')">Teorema da Superposição</h2>
-<div id="teorema-superposicao" class="content">
-    <p>O Teorema da Superposição é um princípio fundamental em circuitos lineares, que afirma que, em um circuito com múltiplas fontes de tensão ou corrente, a resposta total (como tensão ou corrente em um resistor) é a soma das respostas causadas por cada fonte individualmente, considerando uma fonte de cada vez.</p>
-    <p>Este teorema é particularmente útil para simplificar circuitos complexos, permitindo que a análise de um circuito seja realizada de forma sequencial. Para aplicar o teorema, as fontes não consideradas são substituídas por suas condições de "circuito aberto" (fontes de tensão se tornam curtos e fontes de corrente se tornam circuitos abertos).</p>
-    <p>Ao utilizar o teorema, você analisa o circuito com uma fonte de cada vez, calculando as tensões e correntes resultantes. Depois, soma essas respostas para encontrar o valor total.</p>
-    <h3>Métodos de Resolução:</h3>
-    <pre>Vt = V1 + V2</pre>
-    <p>Onde:</p>
-    <ul>
-        <li><strong>V1</strong> é a tensão causada pela primeira fonte</li>
-        <li><strong>V2</strong> é a tensão causada pela segunda fonte</li>
-        <li><strong>Vt</strong> é a tensão total no circuito</li>
-    </ul>
-    <p>Em circuitos com mais de duas fontes, basta aplicar a mesma lógica, somando as respostas de cada fonte individualmente.</p>
-    <h3>Exemplo:</h3>
-    <p>Considere um circuito com duas fontes de tensão, V1 e V2, ligadas a um resistor. Para calcular a tensão total (Vt) no resistor, você pode calcular a tensão gerada por cada fonte separadamente (V1 e V2) e depois somá-las:</p>
-    <pre>Vt = V1 + V2</pre>
-    <p>Por exemplo, se V1 = 5V e V2 = 3V, então:</p>
-    <pre>Vt = 5V + 3V = 8V</pre>
-    <h3>Imagem do Circuito:</h3>
-    <img src="https://www.ufrgs.br/eng04030/Aulas/teoria/cap_09/imgs/ft090080.gif" alt="Circuito do Teorema da Superposição" width="500">
-    <h3>Atividades:</h3>
-    <div class="atividade" onclick="verificarAtividade(this, true)">1. Aplique o Teorema da Superposição para calcular a corrente em um resistor com duas fontes de corrente independentes.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">2. Ignorar o efeito de uma fonte e aplicar a superposição de forma incorreta.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">3. Em um circuito com três fontes de tensão, calcule a tensão total considerando as contribuições de cada uma delas.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">4. Aplique o Teorema da Superposição incorretamente, deixando de considerar uma das fontes de tensão no cálculo.</div>
-</div>
-
-        <<h2 onclick="toggleContent('teoremas')">Teoremas: Proporcionalidade, LKC e LKT</h2>
-<div id="teoremas" class="content">
-    <p>O Teorema da Proporcionalidade é um princípio que descreve a relação direta entre grandezas que variam proporcionalmente. Em circuitos elétricos, a proporcionalidade pode ser observada quando a corrente ou a tensão de um componente varia de maneira direta com a variação de outro parâmetro, como a resistência.</p>
-    <p>As Leis de Kirchhoff são fundamentais para a análise de circuitos elétricos. Elas permitem determinar as correntes e tensões em circuitos complexos. As duas leis principais de Kirchhoff são:</p>
-    <ul>
-        <li><strong>Lei das Correntes de Kirchhoff (LKC)</strong>: A soma das correntes que entram em um nó é igual à soma das correntes que saem desse nó. Matematicamente, pode ser expressa como:</li>
-        <pre>LKC: ΣI = 0</pre>
-        <li><strong>Lei das Tensões de Kirchhoff (LKT)</strong>: A soma algébrica das tensões em um loop fechado de um circuito é igual a zero. Ou seja, a tensão total aplicada em um circuito fechado é igual à soma das quedas de tensão ao longo do circuito. A fórmula para a LKT é:</li>
-        <pre>LKT: ΣV = 0</pre>
-    </ul>
-    <p>Essas leis são úteis para resolver circuitos que não podem ser analisados facilmente por métodos mais simples, como os circuitos com múltiplas fontes e componentes interligados.</p>
-    <h3>Exemplo:</h3>
-    <p>Considere um circuito com dois nós e três resistores conectados. Vamos aplicar a LKC e a LKT para determinar a corrente e as tensões:</p>
-    <p>Se tivermos um circuito com as seguintes informações:</p>
-    <ul>
-        <li>Fonte de tensão de 10 V</li>
-        <li>Resistor R1 = 5 Ω</li>
-        <li>Resistor R2 = 10 Ω</li>
-        <li>Resistor R3 = 15 Ω</li>
-    </ul>
-    <p>Aplicando a LKC, podemos determinar que as correntes que entram e saem de um nó devem ser equilibradas. A LKT nos ajudará a calcular as quedas de tensão no circuito. Por exemplo, se a corrente total for 1 A, a tensão em R1 será:</p>
-    <pre>V1 = I * R1 = 1 A * 5 Ω = 5 V</pre>
-    <p>Aplicando a LKT, temos:</p>
-    <pre>ΣV = 10 V - 5 V - 3 V (queda de tensão nos resistores) = 0 V</pre>
-    <h3>Como identificar e resolver:</h3>
-    <p>Para resolver um circuito usando as Leis de Kirchhoff, siga os seguintes passos:</p>
-    <ol>
-        <li>Identifique os nós e as malhas (loops) do circuito.</li>
-        <li>Aplique a LKC nos nós para equilibrar as correntes que entram e saem.</li>
-        <li>Aplique a LKT nas malhas para equilibrar as tensões.</li>
-        <li>Utilize as equações resultantes para resolver as correntes e tensões no circuito.</li>
-    </ol>
-    <h3>Atividades:</h3>
-    <div class="atividade" onclick="verificarAtividade(this, true)">1. Aplique a LKC para determinar a corrente em um nó de um circuito com três resistores e duas fontes de tensão.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">2. Aplique a Lei das Tensões de Kirchhoff de forma incorreta em um circuito com três malhas.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">3. Determine a corrente total em um circuito com quatro resistores em série, aplicando a LKC.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">4. Aplique a LKT para encontrar a tensão em cada resistor em um circuito com duas fontes de tensão e resistores em paralelo.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">5. Resolva um circuito de corrente contínua aplicando a LKC, mas deixe de considerar uma das fontes de tensão.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">6. Use a LKC para calcular a corrente em um nó em um circuito com resistores em paralelo e série.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">7. Aplique a LKT para resolver um circuito com duas malhas e três resistores.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">8. Calcule a resistência equivalente de um circuito complexo aplicando tanto a LKC quanto a LKT.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">9. Use a LKC e a LKT para calcular a corrente e a tensão em um circuito com múltiplas fontes de corrente.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">10. Aplique a LKC incorretamente, considerando correntes negativas sem justificativa.</div>
-</div>
-<h2 onclick="toggleContent('analise-circuitos-cc')">Análise de Circuitos CC: Aplicação das Leis de Ohm e Kirchhoff</h2>
-<div id="analise-circuitos-cc" class="content">
-    <p>Em circuitos de corrente contínua (CC), as Leis de Ohm e Kirchhoff são fundamentais para determinar variáveis como corrente, tensão e resistência. A Lei de Ohm descreve a relação entre tensão, corrente e resistência, enquanto as Leis de Kirchhoff ajudam a resolver circuitos mais complexos envolvendo múltiplos elementos interligados.</p>
-    
-    <h3>Métodos de Resolução:</h3>
-    <p>Para analisar circuitos CC, siga estas etapas:</p>
-    <ul>
-        <li><strong>Lei de Ohm:</strong> Use a Lei de Ohm (V = I * R) para encontrar a corrente, a tensão ou a resistência em circuitos simples.</li>
-        <pre>V = I * R</pre>
-        <li><strong>Leis de Kirchhoff:</strong> Quando o circuito for mais complexo, aplique as Leis de Kirchhoff para resolver a corrente e a tensão em múltiplos ramos e nós. As duas leis principais são:</li>
+    <div id="ponte-de-wheatstone" class="content">
+        <p>A Ponte de Wheatstone é um dispositivo utilizado para medir resistências desconhecidas. Quando a ponte está em equilíbrio, a razão entre os resistores conhecidos é igual à razão entre o resistor desconhecido e o resistor de referência.</p>
+        <h3>Método de Cálculo:</h3>
+        <pre>Rx = (R2 * R3) / R1</pre>
+        
+        <h3>Exemplos:</h3>
+        <p><strong>Exemplo 1:</strong> Se R1 = 10Ω, R2 = 20Ω e R3 = 30Ω, calcule Rx.</p>
         <ul>
-            <li><strong>Lei das Correntes de Kirchhoff (LKC):</strong> A soma das correntes que entram em um nó é igual à soma das correntes que saem desse nó.</li>
-            <pre>LKC: ΣI = 0</pre>
-            <li><strong>Lei das Tensões de Kirchhoff (LKT):</strong> A soma algébrica das tensões em um loop fechado é igual a zero.</li>
-            <pre>LKT: ΣV = 0</pre>
+            <li><strong>Rx =</strong> (20 * 30) / 10 = 600 / 10 = 60Ω</li>
         </ul>
-    </ul>
 
-    <h3>Exemplos:</h3>
+        <p><strong>Exemplo 2:</strong> Se R1 = 15Ω, R2 = 25Ω e R3 = 35Ω, calcule Rx.</p>
+        <ul>
+            <li><strong>Rx =</strong> (25 * 35) / 15 = 875 / 15 = 58.33Ω</li>
+        </ul>
 
-<!-- Exemplo 1 -->
-<p><strong>Exemplo 1:</strong> Circuito com dois resistores em série e uma fonte de tensão.</p>
-<p>Considere um circuito simples com uma fonte de tensão de 24V e dois resistores em série: R1 = 8Ω e R2 = 12Ω.</p>
-<p>1. Calcule a resistência total do circuito:</p>
-<pre>Rt = R1 + R2 = 8Ω + 12Ω = 20Ω</pre>
-<p>2. Calcule a corrente total no circuito usando a Lei de Ohm:</p>
-<pre>I = V / Rt = 24V / 20Ω = 1.2A</pre>
-<p>3. Determine a tensão em cada resistor:</p>
-<pre>V1 = I * R1 = 1.2A * 8Ω = 9.6V</pre>
-<pre>V2 = I * R2 = 1.2A * 12Ω = 14.4V</pre>
-<p>A soma das tensões em R1 e R2 é igual à tensão total fornecida pela fonte: 9.6V + 14.4V = 24V.</p>
+        <p><strong>Exemplo 3:</strong> Se R1 = 5Ω, R2 = 10Ω e R3 = 15Ω, calcule Rx.</p>
+        <ul>
+            <li><strong>Rx =</strong> (10 * 15) / 5 = 150 / 5 = 30Ω</li>
+        </ul>
 
-<!-- Exemplo 2 -->
-<p><strong>Exemplo 2:</strong> Circuito com dois resistores em paralelo e uma fonte de tensão.</p>
-<p>Agora, considere um circuito com uma fonte de tensão de 18V e dois resistores em paralelo: R1 = 6Ω e R2 = 12Ω.</p>
-<p>1. Calcule a resistência equivalente dos resistores em paralelo:</p>
-<pre>1 / Rt = 1 / R1 + 1 / R2</pre>
-<pre>1 / Rt = 1 / 6Ω + 1 / 12Ω = 2 / 12Ω</pre>
-<pre>Rt = 12Ω / 2 = 6Ω</pre>
-<p>2. Calcule a corrente total usando a Lei de Ohm:</p>
-<pre>I = V / Rt = 18V / 6Ω = 3A</pre>
-<p>3. Calcule a corrente em cada resistor:</p>
-<pre>I1 = V / R1 = 18V / 6Ω = 3A</pre>
-<pre>I2 = V / R2 = 18V / 12Ω = 1.5A</pre>
-<p>A corrente total do circuito é a soma das correntes individuais: 3A + 1.5A = 4.5A.</p>
+        <p><strong>Exemplo 4:</strong> Se R1 = 12Ω, R2 = 18Ω e R3 = 24Ω, calcule Rx.</p>
+        <ul>
+            <li><strong>Rx =</strong> (18 * 24) / 12 = 432 / 12 = 36Ω</li>
+        </ul>
 
-<!-- Exemplo 3 -->
-<p><strong>Exemplo 3:</strong> Circuito com três resistores em série e uma fonte de tensão de 15V.</p>
-<p>Considere um circuito com três resistores em série: R1 = 2Ω, R2 = 3Ω e R3 = 5Ω.</p>
-<p>1. Calcule a resistência total:</p>
-<pre>Rt = R1 + R2 + R3 = 2Ω + 3Ω + 5Ω = 10Ω</pre>
-<p>2. Calcule a corrente total no circuito usando a Lei de Ohm:</p>
-<pre>I = V / Rt = 15V / 10Ω = 1.5A</pre>
-<p>3. Determine a tensão em cada resistor:</p>
-<pre>V1 = I * R1 = 1.5A * 2Ω = 3V</pre>
-<pre>V2 = I * R2 = 1.5A * 3Ω = 4.5V</pre>
-<pre>V3 = I * R3 = 1.5A * 5Ω = 7.5V</pre>
-<p>A soma das tensões em R1, R2 e R3 deve ser igual à tensão da fonte: 3V + 4.5V + 7.5V = 15V.</p>
+        <p><strong>Exemplo 5:</strong> Se R1 = 8Ω, R2 = 16Ω e R3 = 32Ω, calcule Rx.</p>
+        <ul>
+            <li><strong>Rx =</strong> (16 * 32) / 8 = 512 / 8 = 64Ω</li>
+        </ul>
+    </div>
 
-<!-- Exemplo 4 -->
-<p><strong>Exemplo 4:</strong> Circuito com resistores em paralelo e uma fonte de tensão de 24V.</p>
-<p>Considere um circuito com uma fonte de tensão de 24V e três resistores em paralelo: R1 = 8Ω, R2 = 4Ω e R3 = 16Ω.</p>
-<p>1. Calcule a resistência equivalente dos resistores em paralelo:</p>
-<pre>1 / Rt = 1 / R1 + 1 / R2 + 1 / R3</pre>
-<pre>1 / Rt = 1 / 8Ω + 1 / 4Ω + 1 / 16Ω = 1 / 8Ω + 4 / 16Ω + 1 / 16Ω = 3 / 16Ω</pre>
-<pre>Rt = 16Ω / 3 ≈ 5.33Ω</pre>
-<p>2. Calcule a corrente total no circuito:</p>
-<pre>I = V / Rt = 24V / 5.33Ω ≈ 4.5A</pre>
-<p>3. Calcule a corrente em cada resistor usando a Lei de Ohm:</p>
-<pre>I1 = V / R1 = 24V / 8Ω = 3A</pre>
-<pre>I2 = V / R2 = 24V / 4Ω = 6A</pre>
-<pre>I3 = V / R3 = 24V / 16Ω = 1.5A</pre>
-<p>A corrente total é a soma das correntes individuais: 3A + 6A + 1.5A = 10.5A.</p>
+    <h2 onclick="toggleContent('teorema-superposicao')">Teorema da Superposição</h2>
+    <div id="teorema-superposicao" class="content">
+        <p>O Teorema da Superposição afirma que a resposta total de um circuito com múltiplas fontes é a soma das respostas causadas por cada fonte individualmente. Este teorema é aplicável a circuitos lineares.</p>
+        
+        <h3>Exemplos:</h3>
+        <p><strong>Exemplo 1:</strong> Se V1 = 5V e V2 = 3V, qual é a tensão total (Vt) no circuito?</p>
+        <ul>
+            <li><strong>Vt =</strong> 5V + 3V = 8V</li>
+        </ul>
 
-   <h3>Como identificar e resolver:</h3>
-    <p>Para resolver circuitos CC de forma eficiente, siga estas etapas:</p>
-    <ol>
-        <li>Identifique as fontes de tensão e as disposições dos resistores (em série, paralelo ou combinação).</li>
-        <li>Calcule a resistência total do circuito.</li>
-        <li>Use a Lei de Ohm para determinar a corrente total, se necessário.</li>
-        <li>Para circuitos mais complexos, aplique as Leis de Kirchhoff para encontrar as correntes e tensões nos diferentes ramos e nós.</li>
-    </ol>
+        <p><strong>Exemplo 2:</strong> Se V1 = 10V e V2 = 4V, qual é a tensão total (Vt)?</p>
+        <ul>
+            <li><strong>Vt =</strong> 10V + 4V = 14V</li>
+        </ul>
 
-    <h3>Atividades:</h3>
-    <div class="atividade" onclick="verificarAtividade(this, true)">1. Resolva um circuito CC com três resistores em série e uma fonte de tensão, aplicando a Lei de Ohm e as Leis de Kirchhoff.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">2. Aplique a Lei de Ohm incorretamente para determinar a corrente, desconsiderando o valor correto da resistência.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">3. Resolva um circuito CC com resistores em paralelo usando a Lei de Ohm e as Leis de Kirchhoff para determinar a corrente em cada resistor.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">4. Aplique a Lei de Kirchhoff das Correntes (LKC) para calcular a corrente em um circuito com três nós e duas fontes de corrente.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">5. Calcule a tensão em cada resistor em um circuito paralelo usando a Lei de Ohm e a Lei de Kirchhoff das Tensões (LKT).</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">6. Resolva um circuito com resistores em série e paralelo, aplicando tanto a Lei de Ohm quanto as Leis de Kirchhoff.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">7. Aplique a Lei de Kirchhoff incorretamente ao resolver um circuito com duas fontes de tensão em paralelo.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">8. Determine a corrente total e a tensão em um circuito com três resistores em série, utilizando a Lei de Ohm e as Leis de Kirchhoff.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">9. Resolva um circuito com múltiplas fontes de tensão e resistores em paralelo aplicando corretamente as Leis de Kirchhoff.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">10. Ignore a resistência total ao aplicar a Lei de Ohm para calcular a corrente em um circuito de corrente contínua.</div>
+        <p><strong>Exemplo 3:</strong> Se V1 = 6V e V2 = 2V, qual é a tensão total (Vt)?</p>
+        <ul>
+            <li><strong>Vt =</strong> 6V + 2V = 8V</li>
+        </ul>
+
+        <p><strong>Exemplo 4:</strong> Se V1 = 8V e V2 = 1V, qual é a tensão total (Vt)?</p>
+        <ul>
+            <li><strong>Vt =</strong> 8V + 1V = 9V</li>
+        </ul>
+
+        <p><strong>Exemplo 5:</strong> Se V1 = 7V e V2 = 5V, qual é a tensão total (Vt)?</p>
+        <ul>
+            <li><strong>Vt =</strong> 7V + 5V = 12V</li>
+        </ul>
+    </div>
+
+    <h2 onclick="toggleContent('teoremas')">Teoremas: Proporcionalidade, LKC e LKT</h2>
+    <div id="teoremas" class="content">
+        <p>O Teorema da Proporcionalidade descreve a relação direta entre grandezas proporcionais. As Leis de Kirchhoff permitem determinar as correntes e tensões em circuitos.</p>
+        
+        <h3>Exemplos de LKC e LKT:</h3>
+        <p><strong>Exemplo 1 (LKC):</strong> Se três correntes entram em um nó (I1 = 3A, I2 = 2A e I3 = 1A), qual é a corrente que sai?</p>
+        <ul>
+            <li><strong>ΣI =</strong> 3A + 2A + 1A = 6A, portanto, a corrente que sai é 6A.</li>
+        </ul>
+
+        <p><strong>Exemplo 2 (LKC):</strong> Se as correntes entrando em um nó são I1 = 5A, I2 = 3A e I3 = 7A, qual é a corrente de saída?</p>
+        <ul>
+            <li><strong>ΣI =</strong> 5A + 3A + 7A = 15A, a corrente de saída é 15A.</li>
+        </ul>
+
+        <p><strong>Exemplo 3 (LKT):</strong> Em um circuito fechado, se as tensões são V1 = 5V, V2 = 3V, V3 = 4V, qual é a soma total das tensões?</p>
+        <ul>
+            <li><strong>ΣV =</strong> 5V + 3V + 4V = 12V</li>
+        </ul>
+
+        <p><strong>Exemplo 4 (LKT):</strong> Em um circuito fechado, se as tensões são V1 = 7V, V2 = 2V, V3 = 8V, qual é a soma total das tensões?</p>
+        <ul>
+            <li><strong>ΣV =</strong> 7V + 2V + 8V = 17V</li>
+        </ul>
+
+        <p><strong>Exemplo 5 (LKC e LKT):</strong> Se você tem dois nós com correntes I1 = 4A, I2 = 6A e tensões V1 = 5V e V2 = 10V, calcule as variáveis aplicando LKC e LKT.</p>
+        <ul>
+            <li><strong>ΣI =</strong> 4A + 6A = 10A</li>
+            <li><strong>ΣV =</strong> 5V + 10V = 15V</li>
+        </ul>
+    </div>
 </div>
+<!-- Nova Aba: Atividades de Sala -->
+<h2 onclick="toggleContent('atividades-de-sala')">Atividades de Sala</h2>
+<div id="atividades-de-sala" class="content">
+  <h3>Atividade 2: Cálculos de Resistência e Corrente</h3>
+  
+  <!-- Questão 2.1 -->
+  <h4>2.1) Calcular a resistência de um fio de alumínio de 200m de comprimento e 2mm² de seção.</h4>
+  <p><strong>Passo 1: Fórmula da resistência de um fio condutor</strong></p>
+  <p>A fórmula para calcular a resistência de um fio condutor é:</p>
+  <pre>R = ρ × (L / A)</pre>
+  <p>Onde:</p>
+  <ul>
+    <li>R = resistência (Ω)</li>
+    <li>ρ = resistividade do material (Ω·m)</li>
+    <li>L = comprimento do fio (m)</li>
+    <li>A = área da seção transversal (m²)</li>
+  </ul>
+  <p>Dados:</p>
+  <ul>
+    <li>ρ (resistividade do alumínio) = 2,8 × 10<sup>-8</sup> Ω·m</li>
+    <li>L = 200m</li>
+    <li>A = 2mm² = 2 × 10<sup>-6</sup> m²</li>
+  </ul>
+  
+  <p>Substituindo os valores na fórmula:</p>
+  <pre>R = 2,8 × 10<sup>-8</sup> × (200 / 2 × 10<sup>-6</sup>)</pre>
+  <p>R = 2,8 × 10<sup>-8</sup> × 10<sup>8</sup> = 2,8 Ω</p>
+  
+  <p><strong>Resposta:</strong> A resistência do fio de alumínio é 2,8 Ω.</p>
+  
+  <!-- Questão 2.2 -->
+  <h4>2.2) Um fio de cobre tem 2mm de diâmetro, aplicando-se uma tensão de 20V ao fio, resulta uma corrente de 5A. Qual é o comprimento do fio?</h4>
+  <p><strong>Passo 1: Fórmula para calcular a resistência de um fio condutor</strong></p>
+  <p>A resistência de um fio é dada pela fórmula:</p>
+  <pre>R = ρ × (L / A)</pre>
+  <p>Onde:</p>
+  <ul>
+    <li>ρ (resistividade do cobre) = 1,7 × 10<sup>-8</sup> Ω·m</li>
+    <li>L = comprimento do fio (a ser calculado)</li>
+    <li>A = área da seção transversal do fio</li>
+  </ul>
+  
+  <p><strong>Passo 2: Área da seção transversal (A)</strong></p>
+  <p>O fio tem diâmetro de 2mm, então o raio (r) é 1mm = 1 × 10<sup>-3</sup> m.</p>
+  <p>A área da seção transversal de um fio circular é dada por:</p>
+  <pre>A = π × r²</pre>
+  <p>A = π × (1 × 10<sup>-3</sup>)² ≈ 3,1416 × 10<sup>-6</sup> m²</p>
+  
+  <p><strong>Passo 3: Calcular a resistência (R) do fio</strong></p>
+  <p>Usando a Lei de Ohm, sabemos que:</p>
+  <pre>R = V / I</pre>
+  <p>Onde:</p>
+  <ul>
+    <li>V = 20V</li>
+    <li>I = 5A</li>
+  </ul>
+  <p>Logo, a resistência é:</p>
+  <pre>R = 20 / 5 = 4 Ω</pre>
+  
+  <p><strong>Passo 4: Calcular o comprimento do fio (L)</strong></p>
+  <p>Agora, substituímos os valores conhecidos na fórmula da resistência do fio:</p>
+  <pre>R = ρ × (L / A)</pre>
+  <p>4 = (1,7 × 10<sup>-8</sup>) × (L / 3,1416 × 10<sup>-6</sup>)</p>
+  <p>4 = (1,7 × 10<sup>-8</sup> × L) / 3,1416 × 10<sup>-6</sup></p>
+  <p>L = (4 × 3,1416 × 10<sup>-6</sup>) / 1,7 × 10<sup>-8</sup> ≈ 7,4 × 10<sup>3</sup> m</p>
+  
+  <p><strong>Resposta:</strong> O comprimento do fio é aproximadamente 7400 metros.</p>
+  
+  <!-- Questão 2.3 -->
+  <h4>2.3) A resistência de um condutor é 25kΩ. Calcular:</h4>
+  <p><strong>a) Sua condutância</strong></p>
+  <p>A condutância (G) é o inverso da resistência (R), ou seja:</p>
+  <pre>G = 1 / R</pre>
+  <p>Substituindo o valor de R (25kΩ = 25.000Ω):</p>
+  <pre>G = 1 / 25.000 = 0,00004 S (Siemens)</pre>
+  
+  <p><strong>b) Corrente em mA quando submetido a 10V</strong></p>
+  <p>A corrente (I) pode ser calculada pela Lei de Ohm:</p>
+  <pre>I = V / R</pre>
+  <p>Substituindo os valores de V (10V) e R (25.000Ω):</p>
+  <pre>I = 10V / 25.000Ω = 0,0004 A = 0,4mA</pre>
+  
+  <p><strong>Resposta:</strong> A corrente é 0,4mA.</p>
+  
+  <!-- Questão 3 -->
+  <h3>Atividade 3: Chuveiro Elétrico</h3>
+  <h4>3) Um chuveiro tem as especificações 3500W/220V. Calcular:</h4>
+  
+  <p><strong>a) Intensidade da corrente</strong></p>
+  <p>A potência elétrica (P) é dada pela fórmula:</p>
+  <pre>P = V × I</pre>
+  <p>Onde:</p>
+  <ul>
+    <li>P = 3500W</li>
+    <li>V = 220V</li>
+    <li>I = intensidade da corrente (a ser calculada)</li>
+  </ul>
+  
+  <p>Substituindo os valores:</p>
+  <pre>I = P / V = 3500 / 220 ≈ 15,91 A</pre>
+  
+  <p><strong>Resposta:</strong> A intensidade da corrente é aproximadamente 15,91A.</p>
+  
+  <p><strong>b) Valor da resistência</strong></p>
+  <p>A resistência (R) pode ser calculada pela Lei de Ohm:</p>
+  <pre>R = V / I</pre>
+  <p>Substituindo os valores:</p>
+  <pre>R = 220V / 15,91A ≈ 13,84 Ω</pre>
+  
+  <p><strong>Resposta:</strong> A resistência é aproximadamente 13,84Ω.</p>
+  
+  <p><strong>c) Energia gasta durante 30 minutos, em kWh</strong></p>
+  <p>A energia (E) é dada pela fórmula:</p>
+  <pre>E = P × t</pre>
+  <p>Onde:</p>
+  <ul>
+    <li>P = 3500W</li>
+    <li>t = tempo em horas = 30 minutos = 0,5 horas</li>
+  </ul>
+  
+  <p>Substituindo os valores:</p>
+  <pre>E = 3500W × 0,5h = 1750 Wh = 1,75 kWh</pre>
+  
+  <p><strong>Resposta:</strong> A energia gasta é 1,75 kWh.</p>
 
-        <h2 onclick="toggleContent('malhas')">Malhas</h2>
-<div id="malhas" class="content">
-    <p>Malhas são laços fechados em um circuito, ou seja, um caminho circular que começa e termina no mesmo ponto. A análise de malhas é uma técnica utilizada em circuitos elétricos para calcular as correntes que circulam por cada malha, aplicando a Lei das Tensões de Kirchhoff (LTK), que afirma que a soma das tensões em uma malha é igual a zero.</p>
-    
-    <h3>Como identificar e resolver:</h3>
-    <p>Ao resolver um circuito utilizando a análise de malhas, siga os seguintes passos:</p>
-    <ol>
-        <li>Identifique as malhas no circuito. Cada malha é um caminho fechado que passa por vários componentes do circuito.</li>
-        <li>Rotule as correntes em cada malha. As correntes podem ser hipotéticas, mas ao aplicar a LTK, essas correntes serão determinadas.</li>
-        <li>Use a Lei das Tensões de Kirchhoff para escrever equações para cada malha. A equação para cada malha será a soma das tensões nos componentes da malha igual a zero.</li>
-        <li>Resolva o sistema de equações simultâneas para encontrar as correntes em cada malha.</li>
-    </ol>
-    
-    <h3>Fórmulas de Resolução:</h3>
-    <p>Para cada malha, a Lei das Tensões de Kirchhoff é expressa como:</p>
-    <pre>ΣV = 0</pre>
-    <p>Onde ΣV é a soma das tensões na malha, considerando as quedas de tensão nos resistores e as tensões das fontes.</p>
-    <p>Se um resistor tem uma resistência \( R \) e a corrente que passa por ele é \( I \), então a queda de tensão no resistor é dada por:</p>
-    <pre>V = I * R</pre>
-    
-    <h3>Exemplo:</h3>
-    <p>Considere o seguinte circuito com duas fontes e três resistores:</p>
-    <pre>Fonte 1 = 12V, Fonte 2 = 6V, R1 = 4Ω, R2 = 3Ω, R3 = 2Ω</pre>
-    <p>Desejamos encontrar a corrente em cada malha.</p>
-    <p>1. Para a malha 1, com a fonte 12V e resistores R1 e R2, a equação é:</p>
-    <pre>12V - I1 * 4Ω - I2 * 3Ω = 0</pre>
-    <p>2. Para a malha 2, com a fonte 6V e resistores R2 e R3, a equação é:</p>
-    <pre>6V - I2 * 3Ω - I1 * 2Ω = 0</pre>
-    <p>3. Resolva o sistema de equações simultâneas para encontrar as correntes I1 e I2.</p>
-    
-    <h3>Exemplos:</h3>
-    
-    <!-- Exemplo 1 -->
-    <p><strong>Exemplo 1:</strong> Circuito com duas fontes e três resistores (R1 = 5Ω, R2 = 10Ω, R3 = 15Ω).</p>
-    <p>Equações para as malhas:</p>
-    <pre>Malha 1: 12V - I1 * 5Ω - I2 * 10Ω = 0</pre>
-    <pre>Malha 2: 6V - I2 * 10Ω - I1 * 15Ω = 0</pre>
-    <p>Resolva esse sistema de equações para determinar as correntes I1 e I2.</p>
-
-    <!-- Exemplo 2 -->
-    <p><strong>Exemplo 2:</strong> Circuito com três fontes e dois resistores (R1 = 8Ω, R2 = 6Ω, R3 = 12Ω).</p>
-    <p>Equações para as malhas:</p>
-    <pre>Malha 1: 24V - I1 * 8Ω - I2 * 6Ω = 0</pre>
-    <pre>Malha 2: 6V - I2 * 6Ω - I1 * 12Ω = 0</pre>
-    <p>Resolva esse sistema para determinar as correntes I1 e I2.</p>
-
-    <!-- Exemplo 3 -->
-    <p><strong>Exemplo 3:</strong> Circuito com duas fontes e dois resistores (R1 = 4Ω, R2 = 8Ω) e duas malhas.</p>
-    <p>Equações para as malhas:</p>
-    <pre>Malha 1: 10V - I1 * 4Ω - I2 * 8Ω = 0</pre>
-    <pre>Malha 2: 5V - I2 * 8Ω - I1 * 4Ω = 0</pre>
-    <p>Calcule as correntes I1 e I2.</p>
-
-    <!-- Exemplo 4 -->
-    <p><strong>Exemplo 4:</strong> Circuito com duas fontes de corrente e três resistores (R1 = 2Ω, R2 = 5Ω, R3 = 10Ω).</p>
-    <p>Equações para as malhas:</p>
-    <pre>Malha 1: 10V - I1 * 2Ω - I2 * 5Ω = 0</pre>
-    <pre>Malha 2: 5V - I2 * 5Ω - I1 * 10Ω = 0</pre>
-    <p>Resolva esse sistema para encontrar as correntes I1 e I2.</p>
-
-    <!-- Exemplo 5 -->
-    <p><strong>Exemplo 5:</strong> Circuito com três fontes e três resistores (R1 = 1Ω, R2 = 4Ω, R3 = 9Ω).</p>
-    <p>Equações para as malhas:</p>
-    <pre>Malha 1: 15V - I1 * 1Ω - I2 * 4Ω = 0</pre>
-    <pre>Malha 2: 10V - I2 * 4Ω - I1 * 9Ω = 0</pre>
-    <p>Determine as correntes I1 e I2.</p>
-
-    <h3>Atividades:</h3>
-    <div class="atividade" onclick="verificarAtividade(this, true)">1. Resolva a malha de um circuito com duas fontes e resistores dados.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">2. Ignore a aplicação da Lei de Kirchhoff ao resolver a malha.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">3. Resolva o circuito de uma malha com duas fontes e três resistores.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">4. Resolva um sistema de equações de duas malhas com fontes e resistores dados.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">5. Determine erroneamente as correntes em um circuito de malhas com duas fontes.</div>
-
-</div>
-
-
-        <h2 onclick="toggleContent('geradores-receptores')">Geradores e Receptores</h2>
-<div id="geradores-receptores" class="content">
-    <p>Geradores são dispositivos que fornecem energia elétrica ao circuito, como baterias ou fontes de tensão. Receptores, por outro lado, consomem essa energia, como lâmpadas, motores e outros dispositivos elétricos. A interação entre geradores e receptores define o comportamento do circuito.</p>
-    
-    <h3>Como identificar e resolver:</h3>
-    <p>Para resolver problemas envolvendo geradores e receptores, siga os passos abaixo:</p>
-    <ol>
-        <li>Identifique o gerador (fonte de tensão ou corrente) e os receptores (componentes que consomem energia) no circuito.</li>
-        <li>Use a Lei de Ohm (V = I * R) para calcular as correntes nos receptores e geradores, considerando as tensões e resistências.</li>
-        <li>Use as Leis de Kirchhoff para escrever as equações de corrente e tensão no circuito, levando em consideração a energia fornecida pelos geradores e consumida pelos receptores.</li>
-        <li>Calcule a potência fornecida ou consumida utilizando a fórmula da potência: P = V * I, onde V é a tensão e I é a corrente.</li>
-    </ol>
-    
-    <h3>Fórmulas de Resolução:</h3>
-    <p>Para calcular a potência em circuitos com geradores e receptores, as seguintes fórmulas são usadas:</p>
-    
-    <h4>1. Lei de Ohm:</h4>
-    <pre>V = I * R</pre>
-    
-    <h4>2. Fórmula da Potência:</h4>
-    <pre>P = V * I</pre>
-    
-    <h4>3. Para um receptor consumindo energia:</h4>
-    <pre>P_receptor = V * I_receptor</pre>
-    
-    <h4>4. Para um gerador fornecendo energia:</h4>
-    <pre>P_gerador = V * I_gerador</pre>
-    
-    <h3>Exemplo:</h3>
-    <p>Considere um circuito com um gerador de 12V e um receptor com resistência de 4Ω.</p>
-    <p>1. A corrente gerada pelo gerador pode ser calculada pela Lei de Ohm:</p>
-    <pre>I = V / R = 12V / 4Ω = 3A</pre>
-    <p>2. A potência consumida pelo receptor é dada pela fórmula:</p>
-    <pre>P_receptor = V * I = 12V * 3A = 36W</pre>
-    <p>3. A potência fornecida pelo gerador será igual à potência consumida pelo receptor, ou seja, 36W.</p>
-
-    <h3>Exemplos:</h3>
-
-    <!-- Exemplo 1 -->
-    <p><strong>Exemplo 1:</strong> Um circuito com um gerador de 9V e um receptor de resistência 3Ω.</p>
-    <p>1. Calcule a corrente no circuito:</p>
-    <pre>I = V / R = 9V / 3Ω = 3A</pre>
-    <p>2. Calcule a potência consumida pelo receptor:</p>
-    <pre>P_receptor = 9V * 3A = 27W</pre>
-
-    <!-- Exemplo 2 -->
-    <p><strong>Exemplo 2:</strong> Um gerador de 24V alimenta um motor com resistência 8Ω.</p>
-    <p>1. A corrente gerada pelo gerador é:</p>
-    <pre>I = V / R = 24V / 8Ω = 3A</pre>
-    <p>2. A potência fornecida pelo gerador é:</p>
-    <pre>P_gerador = 24V * 3A = 72W</p>
-
-    <!-- Exemplo 3 -->
-    <p><strong>Exemplo 3:</strong> Um gerador de 5V alimenta um resistor de 10Ω. Calcule a corrente e a potência consumida pelo resistor.</p>
-    <pre>I = 5V / 10Ω = 0.5A</pre>
-    <p>P_receptor = 5V * 0.5A = 2.5W</p>
-
-    <!-- Exemplo 4 -->
-    <p><strong>Exemplo 4:</strong> Um circuito com gerador de 15V e resistor de 5Ω. Calcule a corrente e a potência fornecida pelo gerador.</p>
-    <pre>I = 15V / 5Ω = 3A</pre>
-    <p>P_gerador = 15V * 3A = 45W</p>
-
-    <!-- Exemplo 5 -->
-    <p><strong>Exemplo 5:</strong> Um circuito com uma fonte de 12V e resistência de 6Ω. Determine a potência consumida pelo receptor.</p>
-    <pre>I = 12V / 6Ω = 2A</pre>
-    <p>P_receptor = 12V * 2A = 24W</p>
-
-    <h3>Atividades:</h3>
-    <div class="atividade" onclick="verificarAtividade(this, true)">1. Calcule a potência consumida por um receptor com uma resistência de 4Ω em um circuito de 12V.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">2. Determine erroneamente a potência ao usar a fórmula incorreta para um circuito com gerador de 10V e resistência 5Ω.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">3. Calcule a corrente gerada em um circuito com um gerador de 24V e um resistor de 8Ω.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">4. Determine a potência fornecida por um gerador de 9V em um circuito com resistência de 3Ω.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">5. Resolva um circuito com gerador de 20V e resistência de 10Ω, calculando a corrente e a potência consumida pelo receptor.</div>
-
-</div>
-
-        </div>
-
-        <<h2 onclick="toggleContent('associacoes')">Associações Mistas de Resistores e Uso Correto de Instrumentos de Medidas Elétricas</h2>
-<div id="associacoes" class="content">
-    <p>Associações mistas de resistores combinam resistores em série e paralelo em um único circuito. Para calcular a resistência equivalente, é necessário aplicar as fórmulas apropriadas, considerando as características de cada tipo de associação.</p>
-    
-    <h3>Como identificar e resolver:</h3>
-    <p>Ao resolver circuitos com associações mistas de resistores, siga estas etapas:</p>
-    <ol>
-        <li>Identifique os resistores em série e paralelo.</li>
-        <li>Para resistores em série, a resistência equivalente é a soma das resistências: <pre>Req = R1 + R2 + ...</pre></li>
-        <li>Para resistores em paralelo, a resistência equivalente é dada pela fórmula: <pre>1 / Req = 1 / R1 + 1 / R2 + ...</pre></li>
-        <li>Combine as resistências equivalentes em série ou paralelo para simplificar o circuito até que todas as resistências sejam reduzidas a uma única resistência equivalente.</li>
-    </ol>
-
-    <h3>Fórmulas de Resolução:</h3>
-    <h4>Resistores em Série:</h4>
-    <pre>Req = R1 + R2 + ... + Rn</pre>
-    <p>Em uma associação em série, a corrente que passa por todos os resistores é a mesma, mas a tensão se divide entre eles.</p>
-
-    <h4>Resistores em Paralelo:</h4>
-    <pre>1 / Req = 1 / R1 + 1 / R2 + ... + 1 / Rn</pre>
-    <p>Em uma associação em paralelo, a tensão é a mesma em todos os resistores, mas a corrente se divide entre eles.</p>
-
-    <h3>Exemplo:</h3>
-    <p>Suponha um circuito com dois resistores em série e um resistor em paralelo. Dado que:</p>
-    <ul>
-        <li>R1 = 10Ω</li>
-        <li>R2 = 20Ω</li>
-        <li>R3 = 5Ω (em paralelo com R1 + R2)</li>
-    </ul>
-    
-    <p>1. Primeiro, calcule a resistência equivalente de R1 e R2 em série:</p>
-    <pre>Req_série = R1 + R2 = 10Ω + 20Ω = 30Ω</pre>
-
-    <p>2. Agora, calcule a resistência equivalente da combinação em série (30Ω) com R3 em paralelo:</p>
-    <pre>1 / Req_paralelo = 1 / 30Ω + 1 / 5Ω</pre>
-    <pre>1 / Req_paralelo = 0.0333 + 0.2 = 0.2333</pre>
-    <pre>Req_paralelo ≈ 4.29Ω</pre>
-
-    <h3>Exemplos:</h3>
-
-    <!-- Exemplo 1 -->
-    <p><strong>Exemplo 1:</strong> Dois resistores em série: R1 = 12Ω, R2 = 18Ω.</p>
-    <p>A resistência equivalente é:</p>
-    <pre>Req = R1 + R2 = 12Ω + 18Ω = 30Ω</pre>
-
-    <!-- Exemplo 2 -->
-    <p><strong>Exemplo 2:</strong> Dois resistores em paralelo: R1 = 10Ω, R2 = 10Ω.</p>
-    <p>A resistência equivalente é:</p>
-    <pre>1 / Req = 1 / 10Ω + 1 / 10Ω = 0.2</pre>
-    <pre>Req = 5Ω</pre>
-
-    <!-- Exemplo 3 -->
-    <p><strong>Exemplo 3:</strong> Três resistores em série: R1 = 5Ω, R2 = 10Ω, R3 = 20Ω.</p>
-    <p>A resistência equivalente é:</p>
-    <pre>Req = R1 + R2 + R3 = 5Ω + 10Ω + 20Ω = 35Ω</pre>
-
-    <!-- Exemplo 4 -->
-    <p><strong>Exemplo 4:</strong> Três resistores em paralelo: R1 = 6Ω, R2 = 12Ω, R3 = 18Ω.</p>
-    <p>A resistência equivalente é:</p>
-    <pre>1 / Req = 1 / 6Ω + 1 / 12Ω + 1 / 18Ω = 0.3333 + 0.0833 + 0.0556 = 0.4722</pre>
-    <pre>Req ≈ 2.12Ω</pre>
-
-    <!-- Exemplo 5 -->
-    <p><strong>Exemplo 5:</strong> Resistor em série com dois resistores em paralelo: R1 = 8Ω, R2 = 12Ω, R3 = 24Ω.</p>
-    <p>Primeiro, calcule a resistência equivalente dos resistores em paralelo:</p>
-    <pre>1 / Req_paralelo = 1 / 12Ω + 1 / 24Ω = 0.0833 + 0.0417 = 0.125</pre>
-    <pre>Req_paralelo = 8Ω</pre>
-    <p>Agora, some a resistência de R1:</p>
-    <pre>Req_total = R1 + Req_paralelo = 8Ω + 8Ω = 16Ω</pre>
-
-    <h3>Atividades:</h3>
-    <div class="atividade" onclick="verificarAtividade(this, true)">1. Calcule a resistência equivalente de uma associação mista de resistores com R1 = 5Ω, R2 = 15Ω e R3 = 10Ω em paralelo.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">2. Resolva incorretamente uma associação mista de resistores em série e paralelo.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">3. Determine a resistência equivalente de um circuito com três resistores em paralelo: R1 = 8Ω, R2 = 16Ω, R3 = 24Ω.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">4. Resolva uma associação em série com resistores de 5Ω, 10Ω e 20Ω.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">5. Calcule a resistência equivalente de dois resistores em paralelo: R1 = 12Ω e R2 = 18Ω.</div>
-
-    <h3>Uso Correto de Instrumentos de Medição:</h3>
-    <p>O uso adequado de instrumentos de medição, como multímetros e amperímetros, é fundamental para garantir a precisão nas medições. Algumas dicas incluem:</p>
-    <ul>
-        <li>Escolha a escala correta do multímetro para medir a grandeza desejada (tensão, corrente ou resistência).</li>
-        <li>Desconecte o circuito antes de medir a resistência para evitar danos ao multímetro.</li>
-        <li>Ao medir corrente, o amperímetro deve ser conectado em série no circuito.</li>
-        <li>Ao medir tensão, o voltímetro deve ser conectado em paralelo aos componentes.</li>
-    </ul>
-</div>
-
-
-        <h2 onclick="toggleContent('associacao-divisores')">Associação de Resistores: Divisor de Tensão e Divisor de Corrente</h2>
-<div id="associacao-divisores" class="content">
-    <p>O divisor de tensão e o divisor de corrente são conceitos essenciais para distribuir tensão e corrente em circuitos elétricos, permitindo o controle preciso das grandezas elétricas em diferentes partes do circuito.</p>
-
-    <h3>Como identificar e resolver:</h3>
-    <p>Para resolver problemas envolvendo divisores de tensão e corrente, siga os passos abaixo:</p>
-    <ol>
-        <li>Identifique os resistores que fazem parte da divisão (em série para divisor de tensão ou paralelo para divisor de corrente).</li>
-        <li>Utilize a fórmula apropriada para cada tipo de divisor.</li>
-        <li>Calcule a tensão ou corrente em um resistor com base nas resistências totais do circuito.</li>
-    </ol>
-
-    <h3>Fórmulas de Resolução:</h3>
-    <h4>Divisor de Tensão:</h4>
-    <pre>Vt = (R2 / (R1 + R2)) * Vs</pre>
-    <p>Onde:</p>
-    <ul>
-        <li><strong>Vt</strong>: Tensão no resistor R2.</li>
-        <li><strong>R1</strong> e <strong>R2</strong>: Resistores em série.</li>
-        <li><strong>Vs</strong>: Tensão total (fontes de tensão do circuito).</li>
-    </ul>
-
-    <h4>Divisor de Corrente:</h4>
-    <pre>It = (Rtotal / (R1 + R2)) * Is</pre>
-    <p>Onde:</p>
-    <ul>
-        <li><strong>It</strong>: Corrente no resistor R2.</li>
-        <li><strong>R1</strong> e <strong>R2</strong>: Resistores em paralelo.</li>
-        <li><strong>Rtotal</strong>: Resistência equivalente total do circuito.</li>
-        <li><strong>Is</strong>: Corrente total (fontes de corrente do circuito).</li>
-    </ul>
-
-    <h3>Exemplo 1: Divisor de Tensão</h3>
-    <p>Em um circuito com dois resistores R1 = 10Ω e R2 = 20Ω em série, e uma fonte de tensão Vs = 30V:</p>
-    <pre>Vt = (R2 / (R1 + R2)) * Vs</pre>
-    <pre>Vt = (20 / (10 + 20)) * 30V = (20 / 30) * 30V = 20V</pre>
-    <p>Portanto, a tensão em R2 é de 20V.</p>
-
-    <h3>Exemplo 2: Divisor de Tensão com 3 Resistores</h3>
-    <p>Em um circuito com três resistores em série: R1 = 10Ω, R2 = 20Ω, e R3 = 30Ω, e uma fonte de 60V:</p>
-    <pre>Vt = (R2 / (R1 + R2 + R3)) * Vs</pre>
-    <pre>Vt = (20 / (10 + 20 + 30)) * 60V = (20 / 60) * 60V = 20V</pre>
-    <p>A tensão em R2 será de 20V.</p>
-
-    <h3>Exemplo 3: Divisor de Corrente</h3>
-    <p>Em um circuito com dois resistores R1 = 5Ω e R2 = 15Ω em paralelo, e uma corrente total Is = 12A:</p>
-    <pre>It = (Rtotal / (R1 + R2)) * Is</pre>
-    <pre>Primeiro, calcule Rtotal:</pre>
-    <pre>1 / Rtotal = 1 / R1 + 1 / R2 = 1 / 5 + 1 / 15 = 0.2 + 0.0667 = 0.2667</pre>
-    <pre>Rtotal ≈ 3.75Ω</pre>
-    <pre>It = (3.75 / (5 + 15)) * 12A = (3.75 / 20) * 12A = 2.25A</pre>
-    <p>A corrente no resistor R2 será de 2.25A.</p>
-
-    <h3>Exemplo 4: Divisor de Corrente com 3 Resistores</h3>
-    <p>Em um circuito com três resistores R1 = 10Ω, R2 = 20Ω, R3 = 30Ω em paralelo e corrente total Is = 24A:</p>
-    <pre>1 / Rtotal = 1 / R1 + 1 / R2 + 1 / R3 = 1 / 10 + 1 / 20 + 1 / 30</pre>
-    <pre>1 / Rtotal = 0.1 + 0.05 + 0.0333 = 0.1833</pre>
-    <pre>Rtotal ≈ 5.46Ω</pre>
-    <pre>It = (Rtotal / (R1 + R2 + R3)) * Is = (5.46 / (10 + 20 + 30)) * 24A = 2.18A</pre>
-    <p>A corrente no resistor R2 será de 2.18A.</p>
-
-    <h3>Exemplo 5: Divisor de Tensão em Circuito com Fonte de Tensão Variada</h3>
-    <p>Em um circuito com resistores R1 = 10Ω, R2 = 5Ω e uma fonte de tensão Vs = 50V, calcule a tensão no resistor R2:</p>
-    <pre>Vt = (R2 / (R1 + R2)) * Vs</pre>
-    <pre>Vt = (5 / (10 + 5)) * 50V = (5 / 15) * 50V = 16.67V</pre>
-    <p>A tensão no resistor R2 é de 16.67V.</p>
-
-    <h3>Atividades:</h3>
-    <div class="atividade" onclick="verificarAtividade(this, true)">1. Calcule a tensão em um resistor R1 = 10Ω e R2 = 20Ω com uma fonte de tensão Vs = 50V.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">2. Calcule a corrente de forma incorreta ao aplicar o divisor de corrente.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">3. Calcule a corrente em um resistor R1 = 5Ω e R2 = 15Ω com uma corrente total Is = 10A.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">4. Resolva um divisor de tensão em um circuito com 3 resistores em série.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">5. Resolva um divisor de corrente com resistores R1 = 10Ω e R2 = 20Ω em paralelo.</div>
-
-    <h3>Uso Correto de Instrumentos de Medição:</h3>
-    <p>Ao usar instrumentos de medição, como multímetros e amperímetros, siga estas dicas:</p>
-    <ul>
-        <li>Para medir tensão, use o voltímetro em paralelo com o resistor ou componente.</li>
-        <li>Para medir corrente, use o amperímetro em série com o circuito.</li>
-        <li>Certifique-se de que o multímetro esteja configurado corretamente antes de realizar as medições.</li>
-    </ul>
-</div>
-
-
-      <h2 onclick="toggleContent('condutores-isolantes')">Condutores e Isolantes: Resistores - Código de Cores - Leis de Ohm</h2>
-<div id="condutores-isolantes" class="content">
-    <p>Condutores são materiais que permitem a passagem de corrente elétrica devido à presença de elétrons livres, como cobre e alumínio. Isolantes, por outro lado, impedem a passagem de corrente, como borracha e vidro. Os resistores, que são dispositivos que limitam o fluxo de corrente elétrica, utilizam um código de cores para indicar seu valor resistivo.</p>
-    
-    <h3>Como identificar e resolver:</h3>
-    <p>Para identificar o valor de um resistor usando o código de cores, siga este procedimento:</p>
-    <ol>
-        <li>Observe as cores dos anéis no resistor. Normalmente, há 4 ou 5 anéis de cores.</li>
-        <li>Cada cor corresponde a um número específico, como mostrado na tabela de códigos de cores:</li>
-    </ol>
-    <pre>
-        Preto: 0, Marrom: 1, Vermelho: 2, Laranja: 3, Amarelo: 4,
-        Verde: 5, Azul: 6, Violeta: 7, Cinza: 8, Branco: 9
-        Dourado: ±5%, Prateado: ±10%
-    </pre>
-    <p>Por exemplo, se um resistor tem as cores: <strong>vermelho, vermelho, marrom</strong>, o valor da resistência é:</p>
-    <pre>Vermelho (2), Vermelho (2), Marrom (multiplicador de 10).</pre>
-    <p>Logo, o valor do resistor seria 22 * 10 = 220Ω.</p>
-    
-    <h3>Leis de Ohm:</h3>
-    <p>Usando a Lei de Ohm (V = I * R), é possível calcular a tensão (V), a corrente (I) ou a resistência (R) em um circuito. Ao usar resistores com valores conhecidos, podemos calcular a corrente que passa por um resistor ou a tensão que ele gera em um circuito.</p>
-    
-    <h3>Exemplo:</h3>
-    <p>Identifique o valor de um resistor a partir de seu código de cores:</p>
-    <p>Se o resistor tem os anéis <strong>vermelho, preto, marrom</strong>, o valor da resistência será:</p>
-    <pre>Vermelho (2), Preto (0), Marrom (multiplicador de 10). O valor da resistência é 20 * 10 = 200Ω.</pre>
-
-    <h3>Exemplos:</h3>
-
-    <!-- Exemplo 1 -->
-    <p><strong>Exemplo 1:</strong> Um resistor com os anéis <strong>vermelho, laranja, marrom</strong> tem a seguinte resistência:</p>
-    <pre>Vermelho (2), Laranja (3), Marrom (multiplicador de 10). O valor da resistência é 23 * 10 = 230Ω.</pre>
-
-    <!-- Exemplo 2 -->
-    <p><strong>Exemplo 2:</strong> Um resistor com os anéis <strong>amarelo, verde, vermelho</strong> tem a seguinte resistência:</p>
-    <pre>Amarelo (4), Verde (5), Vermelho (multiplicador de 100). O valor da resistência é 45 * 100 = 4500Ω ou 4.5kΩ.</pre>
-
-    <!-- Exemplo 3 -->
-    <p><strong>Exemplo 3:</strong> Um resistor com os anéis <strong>azul, cinza, preto, dourado</strong> tem a seguinte resistência:</p>
-    <pre>Azul (6), Cinza (8), Preto (multiplicador de 1). O valor da resistência é 68 * 1 = 68Ω.</pre>
-
-    <!-- Exemplo 4 -->
-    <p><strong>Exemplo 4:</strong> Um resistor com os anéis <strong>preto, preto, marrom, dourado</strong> tem a seguinte resistência:</p>
-    <pre>Preto (0), Preto (0), Marrom (multiplicador de 10). O valor da resistência é 00 * 10 = 0Ω (um curto-circuito).</pre>
-
-    <!-- Exemplo 5 -->
-    <p><strong>Exemplo 5:</strong> Um resistor com os anéis <strong>vermelho, verde, laranja, prateado</strong> tem a seguinte resistência:</p>
-    <pre>Vermelho (2), Verde (5), Laranja (multiplicador de 1000). O valor da resistência é 25 * 1000 = 25kΩ.</pre>
-
-    <h3>Atividades:</h3>
-    <div class="atividade" onclick="verificarAtividade(this, true)">1. Identifique o valor de um resistor usando o código de cores com anéis vermelho, verde, marrom.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">2. Determine a resistência de um resistor de forma errada, desconsiderando o código de cores.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">3. Identifique o valor de um resistor com os anéis azul, laranja, dourado.</div>
-    <div class="atividade" onclick="verificarAtividade(this, true)">4. Calcule a resistência de um resistor com os anéis preto, cinza, marrom.</div>
-    <div class="atividade" onclick="verificarAtividade(this, false)">5. Aplique o código de cores de forma incorreta para identificar a resistência de um resistor.</div>
+  <!-- Questão 4 -->
+  <h4>4) Quatro resistores R1 = 101Ω, R2 = 200Ω, R3 = 40Ω e R4 = 80Ω são ligados em série. Sabendo-se que a tensão em R3 é de 20V. Pede-se:</h4>
+  
+  <p><strong>a) Resistor equivalente (Req)</strong></p>
+  <p>Em uma associação em série, a resistência equivalente (Req) é a soma das resistências dos resistores:</p>
+  <pre>Req = R1 + R2 + R3 + R4</pre>
+  <p>Substituindo os valores dados:</p>
+  <pre>Req = 101Ω + 200Ω + 40Ω + 80Ω = 421Ω</pre>
+  
+  <p><strong>Resposta:</strong> A resistência equivalente é 421Ω.</p>
+  
+  <p><strong>b) Tensão aplicada na associação</strong></p>
+  <p>Sabemos que a tensão em R3 é de 20V. Para calcular a tensão total da associação, utilizamos a Lei de Ohm:</p>
+  <pre>V = I × Req</pre>
+  <p>Primeiro, precisamos calcular a corrente (I) que passa pelos resistores. Usamos a Lei de Ohm para R3:</p>
+  <pre>I = V_R3 / R3</pre>
+  <p>Substituindo os valores:</p>
+  <pre>I = 20V / 40Ω = 0,5A</pre>
+  
+  <p>Agora, podemos calcular a tensão total aplicada à associação:</p>
+  <pre>V_total = I × Req = 0,5A × 421Ω = 210,5V</pre>
+  
+  <p><strong>Resposta:</strong> A tensão aplicada na associação é 210,5V.</p>
+  
+  <p><strong>c) Potência dissipada na associação</strong></p>
+  <p>A potência dissipada (P) em uma associação de resistores pode ser calculada usando a fórmula:</p>
+  <pre>P = V_total × I</pre>
+  <p>Substituindo os valores:</p>
+  <pre>P = 210,5V × 0,5A = 105,25W</pre>
+  
+  <p><strong>Resposta:</strong> A potência dissipada na associação é 105,25W.</p>
+  <!-- Questão 5 -->
+  <h4>5) Quatro resistores R1 = 51Ω, R2 = 40Ω, R3 = 60Ω e R4 = 120Ω são ligados em paralelo. Sabendo-se que I4 = 0,5A, determinar:</h4>
+  
+  <p><strong>a) Resistência equivalente (Req)</strong></p>
+  <p>Em uma associação de resistores em paralelo, a resistência equivalente (Req) é dada pela fórmula:</p>
+  <pre>1 / Req = 1 / R1 + 1 / R2 + 1 / R3 + 1 / R4</pre>
+  <p>Substituindo os valores dados:</p>
+  <pre>1 / Req = 1 / 51 + 1 / 40 + 1 / 60 + 1 / 120</pre>
+  <p>1 / Req ≈ 0,01961 + 0,025 + 0,01667 + 0,00833 ≈ 0,06961</p>
+  <p>Agora, invertendo o valor para encontrar Req:</p>
+  <pre>Req ≈ 1 / 0,06961 ≈ 14,38Ω</pre>
+  
+  <p><strong>Resposta:</strong> A resistência equivalente é aproximadamente 14,38Ω.</p>
+  
+  <p><strong>b) Tensão aplicada na associação e corrente em todos os resistores</strong></p>
+  <p>Sabemos que I4 = 0,5A, e os resistores estão em paralelo. Como todos os resistores estão submetidos à mesma tensão, podemos calcular a tensão aplicada (V) usando a Lei de Ohm para o resistor R4:</p>
+  <pre>V = I4 × R4</pre>
+  <p>Substituindo os valores:</p>
+  <pre>V = 0,5A × 120Ω = 60V</pre>
+  
+  <p>A tensão aplicada na associação é 60V.</p>
+  
+  <p>Agora, para calcular a corrente em cada resistor, utilizamos a Lei de Ohm (I = V / R) para cada um deles:</p>
+  
+  <p>Para R1:</p>
+  <pre>I1 = 60V / 51Ω ≈ 1,18A</pre>
+  
+  <p>Para R2:</p>
+  <pre>I2 = 60V / 40Ω = 1,5A</pre>
+  
+  <p>Para R3:</p>
+  <pre>I3 = 60V / 60Ω = 1A</pre>
+  
+  <p>Para R4 (já dado):</p>
+  <pre>I4 = 0,5A</pre>
+  
+  <p><strong>Resposta:</strong> A corrente em cada resistor é:</p>
+  <ul>
+    <li>I1 ≈ 1,18A</li>
+    <li>I2 = 1,5A</li>
+    <li>I3 = 1A</li>
+    <li>I4 = 0,5A</li>
+  </ul>
+  
+  <p><strong>c) Potência dissipada nos resistores e no equivalente</strong></p>
+  <p>A potência dissipada em cada resistor pode ser calculada usando a fórmula:</p>
+  <pre>P = V² / R</pre>
+  <p>Para cada resistor:</p>
+  
+  <p>Para R1:</p>
+  <pre>P1 = 60² / 51 ≈ 70,59W</pre>
+  
+  <p>Para R2:</p>
+  <pre>P2 = 60² / 40 = 90W</pre>
+  
+  <p>Para R3:</p>
+  <pre>P3 = 60² / 60 = 60W</pre>
+  
+  <p>Para R4:</p>
+  <pre>P4 = 60² / 120 = 30W</pre>
+  
+  <p>Agora, a potência total dissipada é a soma das potências dissipadas por cada resistor:</p>
+  <pre>P_total = P1 + P2 + P3 + P4 ≈ 70,59W + 90W + 60W + 30W = 250,59W</pre>
+  
+  <p>Para calcular a potência dissipada pelo resistor equivalente, usamos a fórmula:</p>
+  <pre>P_eq = V² / Req</pre>
+  <p>Substituindo os valores:</p>
+  <pre>P_eq = 60² / 14,38 ≈ 250,59W</pre>
+  
+  <p><strong>Resposta:</strong> A potência dissipada nos resistores é 250,59W, e a potência dissipada no resistor equivalente é a mesma: 250,59W.</p>
 
 </div>
+</div>
+<h2 onclick="toggleContent('atividades')">ATIVIDADES</h2>
+<div id="atividades" class="content">
+    <h3>Transformação Y-Delta</h3>
+    <div class="atividade">
+        <p>1. Qual é o valor de Ra em uma transformação Y-Delta, se R1 = 10Ω, R2 = 20Ω e R3 = 30Ω?</p>
+        <input type="radio" id="a1" name="atividade1" value="opcao1" onclick="verificarResposta('atividade1', 'opcao2', 'a1')">
+        <label for="a1">A) 1.67Ω</label><br>
+        <input type="radio" id="a2" name="atividade1" value="opcao2" onclick="verificarResposta('atividade1', 'opcao2', 'a2')">
+        <label for="a2">B) 3.33Ω</label><br>
+        <input type="radio" id="a3" name="atividade1" value="opcao3" onclick="verificarResposta('atividade1', 'opcao2', 'a3')">
+        <label for="a3">C) 5Ω</label><br>
+        <input type="radio" id="a4" name="atividade1" value="opcao4" onclick="verificarResposta('atividade1', 'opcao2', 'a4')">
+        <label for="a4">D) 10Ω</label><br>
+    </div>
+    <div class="atividade">
+        <p>2. Qual é o valor de Rb em uma transformação Y-Delta, se R1 = 10Ω, R2 = 20Ω e R3 = 30Ω?</p>
+        <input type="radio" id="b1" name="atividade2" value="opcao1" onclick="verificarResposta('atividade2', 'opcao4', 'b1')">
+        <label for="b1">A) 5Ω</label><br>
+        <input type="radio" id="b2" name="atividade2" value="opcao2" onclick="verificarResposta('atividade2', 'opcao4', 'b2')">
+        <label for="b2">B) 10Ω</label><br>
+        <input type="radio" id="b3" name="atividade2" value="opcao3" onclick="verificarResposta('atividade2', 'opcao4', 'b3')">
+        <label for="b3">C) 15Ω</label><br>
+        <input type="radio" id="b4" name="atividade2" value="opcao4" onclick="verificarResposta('atividade2', 'opcao4', 'b4')">
+        <label for="b4">D) 3.33Ω</label><br>
+    </div>
 
-        <div class="footer">
-            <p>&copy; 2025 Curso Técnico em Eletrotécnica - NAO JOGAREI A TOLHA.</p>
-        </div>
+    <h3>Ponte de Wheatstone</h3>
+    <div class="atividade">
+        <p>3. Qual é o valor de Rx na Ponte de Wheatstone, se R1 = 10Ω, R2 = 20Ω e R3 = 30Ω?</p>
+        <input type="radio" id="c1" name="atividade3" value="opcao1" onclick="verificarResposta('atividade3', 'opcao2', 'c1')">
+        <label for="c1">A) 50Ω</label><br>
+        <input type="radio" id="c2" name="atividade3" value="opcao2" onclick="verificarResposta('atividade3', 'opcao2', 'c2')">
+        <label for="c2">B) 60Ω</label><br>
+        <input type="radio" id="c3" name="atividade3" value="opcao3" onclick="verificarResposta('atividade3', 'opcao2', 'c3')">
+        <label for="c3">C) 30Ω</label><br>
+        <input type="radio" id="c4" name="atividade3" value="opcao4" onclick="verificarResposta('atividade3', 'opcao2', 'c4')">
+        <label for="c4">D) 20Ω</label><br>
+    </div>
 
+    <h3>Teorema da Superposição</h3>
+    <div class="atividade">
+        <p>4. Se as tensões V1 = 5V e V2 = 3V, qual é a tensão total (Vt) no circuito?</p>
+        <input type="radio" id="d1" name="atividade4" value="opcao1" onclick="verificarResposta('atividade4', 'opcao2', 'd1')">
+        <label for="d1">A) 7V</label><br>
+        <input type="radio" id="d2" name="atividade4" value="opcao2" onclick="verificarResposta('atividade4', 'opcao2', 'd2')">
+        <label for="d2">B) 8V</label><br>
+        <input type="radio" id="d3" name="atividade4" value="opcao3" onclick="verificarResposta('atividade4', 'opcao2', 'd3')">
+        <label for="d3">C) 9V</label><br>
+        <input type="radio" id="d4" name="atividade4" value="opcao4" onclick="verificarResposta('atividade4', 'opcao2', 'd4')">
+        <label for="d4">D) 10V</label><br>
+    </div>
+
+    <h3>Teoremas de Kirchhoff</h3>
+    <div class="atividade">
+        <p>5. Qual é o valor da corrente no nó se a soma das correntes que entram for 5A e a soma das correntes que saem for 3A?</p>
+        <input type="radio" id="e1" name="atividade5" value="opcao1" onclick="verificarResposta('atividade5', 'opcao1', 'e1')">
+        <label for="e1">A) 2A</label><br>
+        <input type="radio" id="e2" name="atividade5" value="opcao2" onclick="verificarResposta('atividade5', 'opcao1', 'e2')">
+        <label for="e2">B) 3A</label><br>
+        <input type="radio" id="e3" name="atividade5" value="opcao3" onclick="verificarResposta('atividade5', 'opcao1', 'e3')">
+        <label for="e3">C) 8A</label><br>
+        <input type="radio" id="e4" name="atividade5" value="opcao4" onclick="verificarResposta('atividade5', 'opcao1', 'e4')">
+        <label for="e4">D) 1A</label><br>
+    </div>
+</div>
+
+<script>
+    function verificarResposta(atividade, respostaCorreta, idResposta) {
+        const respostas = document.getElementsByName(atividade);
+        
+        // Limpar estilos anteriores
+        for (let resposta of respostas) {
+            resposta.nextElementSibling.style.backgroundColor = "";
+        }
+
+        // Verificar se a resposta correta foi selecionada
+        const respostaSelecionada = document.getElementById(idResposta);
+        if (respostaSelecionada && respostaSelecionada.value === respostaCorreta) {
+            respostaSelecionada.nextElementSibling.style.backgroundColor = 'green'; // Resposta correta
+        } else {
+            respostaSelecionada.nextElementSibling.style.backgroundColor = 'red'; // Resposta errada
+        }
+    }
+</script>
     </body>
     </html>
-    
+    """
